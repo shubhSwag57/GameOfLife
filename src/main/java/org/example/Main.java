@@ -2,6 +2,12 @@ package org.example;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello, World!");
+        int rows = 10;
+        int cols = 10;
+        double seedPercentage = 0.3;  // 30% alive cells
+
+        Grid grid = new GameGrid(rows, cols);
+        Game game = new Game(grid);
+        game.startSimulation(seedPercentage);
     }
 }
