@@ -13,7 +13,7 @@ public class Game {
             grid.print();
             grid.update();
             try {
-                Thread.sleep(500);  // Slow down the simulation to make it visible
+                Thread.sleep(1000);  // Slow down the simulation to make it visible
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

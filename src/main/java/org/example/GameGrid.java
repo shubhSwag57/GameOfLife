@@ -39,7 +39,7 @@ public class GameGrid implements Grid{
         this.cells = newCells;
     }
 
-    private int countLiveNeighbors(int row, int col) {
+    public int countLiveNeighbors(int row, int col) {
         int[] directions = {-1, 0, 1};
         int count = 0;
         for (int dx : directions) {

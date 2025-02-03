@@ -5,6 +5,10 @@ public class Cell {
     public Cell(boolean isAlive){
         this.isAlive = isAlive;
     }
+    // to create a dead cell by deafult
+    public Cell(){
+        this.isAlive = false;
+    }
 
     public boolean isAlive(){
         return isAlive;
