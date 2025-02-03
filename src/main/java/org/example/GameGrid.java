@@ -18,7 +18,7 @@ public class GameGrid implements Grid{
         Random rand = new Random();
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < cols; j++) {
-                cells[i][j] = rand.nextDouble() < seedPercentage ? new AliveCell() : new DeadCell();
+                cells[i][j] = rand.nextDouble() < seedPercentage ? new Cell(true) : new Cell(false);
             }
         }
     }
@@ -30,9 +30,9 @@ public class GameGrid implements Grid{
             for (int j = 0; j < cols; j++) {
                 int liveNeighbors = countLiveNeighbors(i, j);
                 if (cells[i][j].isAlive()) {
-                    newCells[i][j] = (liveNeighbors == 2 || liveNeighbors == 3) ? new AliveCell() : new DeadCell();
+                    newCells[i][j] = (liveNeighbors == 2 || liveNeighbors == 3) ? new Cell(true) : new Cell(false);
                 } else {
-                    newCells[i][j] = (liveNeighbors == 3) ? new AliveCell() : new DeadCell();
+                    newCells[i][j] = (liveNeighbors == 3) ? new Cell(true) : new Cell(false);
                 }
             }
         }
