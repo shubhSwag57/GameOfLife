@@ -6,21 +6,6 @@ public class Game {
         this.grid = grid;
     }
 
-//    public void start(double seedPercentage) {
-//        grid.seed(seedPercentage);
-//        while (!grid.isAllDead()) {
-//            grid.print();
-//            grid.update();
-//            try {
-//                Thread.sleep(1000);  // Slow down the simulation to make it visible
-//            } catch (InterruptedException e) {
-//                System.out.println("Simulation Interrupted: Ending the game.");
-//                e.printStackTrace();
-//            }
-//        }
-//        System.out.println("Simulation Ended: All cells are dead.");
-//    }
-
     public void initialize(int rows, int cols, double seedPercentage) {
         this.grid = new GameGrid(rows, cols);
         this.grid.seed(seedPercentage);
