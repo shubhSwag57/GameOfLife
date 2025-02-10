@@ -13,6 +13,7 @@ public class GameGrid implements Grid{
         this.cells = new Cell[rows][cols];
     }
 
+
     @Override
     public void seed(double seedPercentage) {
         Random rand = new Random();

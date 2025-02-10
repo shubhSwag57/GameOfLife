@@ -8,6 +8,8 @@ public class Main {
 
         Grid grid = new GameGrid(rows, cols);
         Game game = new Game(grid);
-        game.startSimulation(seedPercentage);
+        GameController controller = new GameController(game);
+        controller.start();
+
     }
 }
