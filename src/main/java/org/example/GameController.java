@@ -13,10 +13,9 @@ public class GameController {
         this.isRunning = false;
     }
 
-    public void start() {
+    public void input(){
         Scanner scanner = new Scanner(System.in);
 
-        // Get grid dimensions and seed percentage from the user
         System.out.println("Enter the number of rows for the grid:");
         int rows = scanner.nextInt();
 
@@ -26,11 +25,13 @@ public class GameController {
         System.out.println("Enter the seed percentage (0.0 to 1.0):");
         double seedPercentage = scanner.nextDouble();
 
-        // Initialize the game with the user's input
+        System.out.println("Game started. Press Enter to stop.");
         game.initialize(rows, cols, seedPercentage);
+    }
+
+    public void start() {
 
         System.out.println("Game started. Press Enter to stop.");
-
         // Start the game loop
         isRunning = true;
         while (isRunning && !game.isAllDead()) {

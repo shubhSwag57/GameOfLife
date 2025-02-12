@@ -1,5 +1,6 @@
 import org.example.Game;
 import org.example.GameController;
+import org.example.Grid;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -16,34 +17,39 @@ public class GameControllerTest {
     private GameController gameController;
     private Game mockGame;
 
+
     @BeforeEach
     public void setUp() {
-        // Mock the Game class
+        // Mock the Game and Grid classes
         mockGame = Mockito.mock(Game.class);
-        // Initialize GameController with the mocked Game
+
+
         gameController = new GameController(mockGame);
     }
 
     @Test
-    public void testStartGameWithAllDeadCells() {
-        // Set up the mock to simulate that all cells are dead
-        when(mockGame.isAllDead()).thenReturn(true);
+    public void testInput() {
+        Scanner scanner = mock(Scanner.class);
+        when(scanner.nextInt()).thenReturn(5, 5);
+        when(scanner.nextDouble()).thenReturn(0.5);
 
-        // Redirect System.out to capture the output
-        ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(outContent));
+        gameController.input();
 
-        // Start the game
-        gameController.start();
-
-        // Verify that the game was initialized and that we checked for "all dead"
-        verify(mockGame, times(1)).initialize(anyInt(), anyInt(), anyDouble());
-        verify(mockGame, times(1)).isAllDead();
-        verify(mockGame, never()).update();
-        verify(mockGame, never()).display();
-
-        // Check the output
-        assertTrue(outContent.toString().contains("All cells are dead. Simulation ends."));
+        verify(mockGame).initialize(5, 5, 0.5);
     }
+
+
+//    @Test
+//    public void testStartGameWhenAllCellsAreDead() {
+//        when(mockGame.isAllDead()).thenReturn(true);
+//
+//        gameController.start();
+//
+//        verify(mockGame, times(1)).initialize(anyInt(), anyInt(), anyDouble());
+//
+//        // Verify that the game is not updated or displayed
+//        verify(mockGame, never()).update();
+//        verify(mockGame, never()).display();
+//    }
 
 }

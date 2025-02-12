@@ -15,4 +15,6 @@ public class Cell {
         this.isAlive = isAlive;
     }
 
+    // cell to have
+
 }
