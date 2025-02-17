@@ -3,14 +3,14 @@ package org.example;
 import java.util.Random;
 
 public class GameGrid implements Grid{
-    private Cell[][] cells;
-    private int rows;
-    private int cols;
+    final ICell[][] cells;
+    final int rows;
+    final int cols;
 
     public GameGrid(int rows, int cols) {
         this.rows = rows;
         this.cols = cols;
-        this.cells = new Cell[rows][cols];
+        this.cells = new ICell[rows][cols];
     }
 
 
