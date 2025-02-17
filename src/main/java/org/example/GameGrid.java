@@ -3,7 +3,7 @@ package org.example;
 import java.util.Random;
 
 public class GameGrid implements Grid{
-    final ICell[][] cells;
+    public ICell[][] cells;
     final int rows;
     final int cols;
 

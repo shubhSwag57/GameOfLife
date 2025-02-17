@@ -31,7 +31,7 @@ public class GameOfLife {
         }
     }
 
-    boolean isAllDead(){
+    public boolean isAllDead(){
         return grid.isAllDead();
     }
 
