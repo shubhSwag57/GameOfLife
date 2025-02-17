@@ -11,86 +11,30 @@ public class GameGrid implements Grid{
         this.rows = rows;
         this.cols = cols;
         this.cells = new ICell[rows][cols];
+        initializeGrid();
     }
 
-
-    @Override
-    public void seed(double seedPercentage) {
-        Random rand = new Random();
-        for (int i = 0; i < rows; i++) {
-            for (int j = 0; j < cols; j++) {
-                cells[i][j] = rand.nextDouble() < seedPercentage ? new Cell(true) : new Cell(false);
+    private void initializeGrid() {
+        for (int i = 0; i < cells.length; i++) {
+            for (int j = 0; j < cells[i].length; j++) {
+                cells[i][j] = new DeadCell();
             }
         }
     }
 
-    @Override
-    public void update() {
-        Cell[][] newCells = new Cell[rows][cols];
-        for (int i = 0; i < rows; i++) {
-            for (int j = 0; j < cols; j++) {
-                int liveNeighbors = countLiveNeighbors(i, j);
-                if (cells[i][j].isAlive()) {
-                    newCells[i][j] = (liveNeighbors == 2 || liveNeighbors == 3) ? new Cell(true) : new Cell(false);
-                } else {
-                    newCells[i][j] = (liveNeighbors == 3) ? new Cell(true) : new Cell(false);
-                }
-            }
-        }
-        this.cells = newCells;
-    }
 
-    public int countLiveNeighbors(int row, int col) {
-        int[] directions = {-1, 0, 1};
-        int count = 0;
-        for (int dx : directions) {
-            for (int dy : directions) {
-                if (dx == 0 && dy == 0) continue;
-                int newRow = row + dx, newCol = col + dy;
-                if (newRow >= 0 && newRow < rows && newCol >= 0 && newCol < cols && cells[newRow][newCol].isAlive()) {
-                    count++;
-                }
-            }
-        }
-        return count;
-    }
-
-    @Override
-    public void print() {
-        for (int i = 0; i < rows; i++) {
-            for (int j = 0; j < cols; j++) {
-                System.out.print(cells[i][j].isAlive() ? "*" : "-");
-            }
-            System.out.println();
-        }
-    }
 
 
     @Override
     public boolean isAllDead() {
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < cols; j++) {
-                if (cells[i][j].isAlive()) {
+                if (cells[i][j] instanceof  AliveCell) {
                     return false;
                 }
             }
         }
         return true;
-    }
-
-    @Override
-    public int getRows() {
-        return rows;
-    }
-
-    @Override
-    public int getColumns() {
-        return cols;
-    }
-
-    @Override
-    public Cell getCellAt(int row, int col) {
-        return cells[row][col];
     }
 
 }

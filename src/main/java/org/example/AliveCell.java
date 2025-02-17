@@ -8,4 +8,6 @@ public class AliveCell implements ICell{
         }
         return this;
     }
+
+
 }

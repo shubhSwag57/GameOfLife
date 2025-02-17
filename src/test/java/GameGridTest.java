@@ -1,4 +1,3 @@
-import org.example.Game;
 import org.example.GameGrid;
 import org.example.Grid;
 import org.junit.Test;

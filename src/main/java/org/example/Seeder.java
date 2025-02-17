@@ -3,9 +3,9 @@ package org.example;
 import java.util.Random;
 
 public class Seeder {
-    private final int seedPercentage;
+    private final double seedPercentage;
 
-    public Seeder(int seedPercentage){
+    public Seeder(double seedPercentage){
         this.seedPercentage = seedPercentage;
     }
 

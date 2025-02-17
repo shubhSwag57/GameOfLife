@@ -2,14 +2,11 @@ package org.example;
 
 public class Main {
     public static void main(String[] args) {
-        int rows = 10;
-        int cols = 10;
-        double seedPercentage = 0.3;  // 30% alive cells
+        GameController gameController = new GameController();
+        gameController.input();
 
-        Grid grid = new GameGrid(rows, cols);
-        Game game = new Game(grid);
-        GameController controller = new GameController(game);
-        controller.start();
+        gameController.start();
+
 
     }
 }

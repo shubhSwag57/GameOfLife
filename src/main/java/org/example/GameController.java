@@ -4,13 +4,15 @@ package org.example;
 import java.util.Scanner;
 
 public class GameController {
+    // input
+    // stop
+    // start
+    // update game of game by it'self.
 
-    private final Game game;
-    private boolean isRunning;
+    private  GameOfLife game;
 
-    public GameController(Game game) {
-        this.game = game;
-        this.isRunning = false;
+    public GameController() {
+        this.game = null;
     }
 
     public void input(){
@@ -24,32 +26,15 @@ public class GameController {
 
         System.out.println("Enter the seed percentage (0.0 to 1.0):");
         double seedPercentage = scanner.nextDouble();
-
-        System.out.println("Game started. Press Enter to stop.");
-        game.initialize(rows, cols, seedPercentage);
+        this.game = new GameOfLife(rows,cols,seedPercentage);
+        System.out.println("Game started. Press q to stop.");
     }
 
     public void start() {
-
-        System.out.println("Game started. Press Enter to stop.");
-        // Start the game loop
-        isRunning = true;
-        while (isRunning && !game.isAllDead()) {
-            game.update();
-            game.display();
-            try {
-                Thread.sleep(500);  // Slow down the simulation for readability
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
-
-        if (game.isAllDead()) {
-            System.out.println("All cells are dead. Simulation ends.");
-        }
+        game.start();
     }
 
     public void stop() {
-        isRunning = false;
+        game.stop();
     }
 }
